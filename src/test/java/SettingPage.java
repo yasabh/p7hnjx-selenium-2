@@ -1,12 +1,13 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class SettingPage extends LoginPage {
 
     protected static final String PATH = "/settings";
+
+    private By avatarInput = By.xpath("//input[@name='avatar']"); // complex xpath (eg. //div//a[@href='asd'])
+    private By saveAvatarButton = By.xpath("//form[@name='avatar-form']//button[@type='submit']"); // complex xpath (eg. //div//a[@href='asd'])
 
     private By displayNameInput = By.xpath("//input[@name='full_name']"); // complex xpath (eg. //div//a[@href='asd'])
     private By countrySelect = By.xpath("//select[@name='country']"); // complex xpath (eg. //div//a[@href='asd'])
@@ -33,6 +34,12 @@ public class SettingPage extends LoginPage {
         WebElement element = waitAndReturnElement(aboutMeInput);
         element.clear();
         element.sendKeys(aboutMe);
+    }
+
+    public void uploadImage(String imageLocation) {
+        WebElement element = waitAndReturnElement(avatarInput);
+        element.sendKeys(imageLocation);
+        waitAndReturnElement(saveAvatarButton).click();
     }
 
     public void clickSaveButton() {

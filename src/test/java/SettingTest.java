@@ -14,7 +14,6 @@ public class SettingTest {
 
     private WebDriver driver;
     private SettingPage settingPage;
-    private String sessionId;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -27,6 +26,9 @@ public class SettingTest {
         settingPage.enterValidUsername(); // Fill input (text,radio,check...)
         settingPage.enterValidPassword(); // Fill input (text,radio,check...)
         settingPage.clickLoginButton(); // Send a form
+
+        // String avatarPath = System.getProperty("user.dir") + "/src/resources/images/batman.png";
+        // settingPage.uploadImage(avatarPath); // File Upload
 
         settingPage.enterDisplayName("Yasin Abdullah"); // Fill input (text,radio,check...)
         settingPage.selectCountry("Indonesia"); // Filling or reading drop-down
