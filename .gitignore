@@ -1,3 +1,4 @@
+!.gitignore
 .gradle
 **/build/
 !src/**/build/
@@ -19,3 +20,18 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+config.properties
+
+# Bin directory (commonly used for compiled binaries)
+bin/
+
+# Gradle
+.gradle/
+build/
+
+# VS Code
+.vscode/
+
+# OS-specific files
+.DS_Store
