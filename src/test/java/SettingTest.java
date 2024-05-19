@@ -18,25 +18,25 @@ public class SettingTest {
         settingPage = new SettingPage(driver);
     }
 
-    // @Test
-    // public void testUpdateProfile() {
-    //     settingPage.enterUsername("p7hnjx"); // Fill input (text,radio,check...)
-    //     settingPage.enterPassword("c@nLog1n"); // Fill input (text,radio,check...)
-    //     settingPage.clickLoginButton(); // Send a form
+    @Test
+    public void testUpdateProfile() {
+        settingPage.enterUsername("p7hnjx"); // Fill input (text,radio,check...)
+        settingPage.enterPassword("c@nLog1n"); // Fill input (text,radio,check...)
+        settingPage.clickLoginButton(); // Send a form
 
-    //     settingPage.enterDisplayName("Yasin Abdullah"); // Fill input (text,radio,check...)
-    //     settingPage.selectCountry("Indonesia"); // Filling or reading drop-down
-    //     settingPage.enterAboutMe("P7HNJX - Big Selenium Project"); // Filling or reading textarea content
-    //     settingPage.clickSaveButton(); // Send a form
+        settingPage.enterDisplayName("Yasin Abdullah"); // Fill input (text,radio,check...)
+        settingPage.selectCountry("Indonesia"); // Filling or reading drop-down
+        settingPage.enterAboutMe("P7HNJX - Big Selenium Project"); // Filling or reading textarea content
+        settingPage.clickSaveButton(); // Send a form
 
-    //     settingPage.dragAndDropText(); // Hover test
+        settingPage.dragAndDropText(); // Hover test
 
-    //     String succesMessage = settingPage.getSuccessMessage();
-    //     Assert.assertTrue("Profile update failed to execute", succesMessage.contains("You have successfully updated your profile."));
-    // }
+        String succesMessage = settingPage.getSuccessMessage();
+        Assert.assertTrue("Profile update failed to execute", succesMessage.contains("You have successfully updated your profile."));
+    }
 
-    // @After
-    // public void tearDown() {
-    //     driver.quit();
-    // }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 }

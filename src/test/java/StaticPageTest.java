@@ -13,21 +13,21 @@ public class StaticPageTest {
     private WebDriver driver;
     private StaticPage staticPage;
 
-    // @Before
-    // public void setUp() throws MalformedURLException {
-    //     driver = DriverSetup.getWebDriver();
-    //     staticPage = new StaticPage(driver);
-    // }
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = DriverSetup.getWebDriver();
+        staticPage = new StaticPage(driver);
+    }
 
-    // @Test
-    // public void testStaticPages() {
-    //     String errorInPage = staticPage.loadAndVerifyPages();
+    @Test
+    public void testStaticPages() {
+        String errorInPage = staticPage.loadAndVerifyPages();
 
-    //     Assert.assertTrue("Page verification failed for the path: " + errorInPage, errorInPage.isEmpty());
-    // }
+        Assert.assertTrue("Page verification failed for the path: " + errorInPage, errorInPage.isEmpty());
+    }
 
-    // @After
-    // public void tearDown() {
-    //     driver.quit();
-    // }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 }
