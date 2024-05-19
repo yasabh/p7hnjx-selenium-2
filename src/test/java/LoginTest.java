@@ -32,13 +32,14 @@ public class LoginTest {
     }
 
     @Test
-    public void testValidLogin() {
+    public void testValidLoginAndLogout() {
         loginPage.enterValidUsername(); // Fill input (text,radio,check...)
         loginPage.enterValidPassword(); // Fill input (text,radio,check...)
         loginPage.clickLoginButton(); // Send a form
 
         Assert.assertTrue("Error login", loginPage.isLoggedIn());
 
+        // loginPage.hoverOverProfile(); // Hover test
         loginPage.clickLogoutButton(); // Logout
     }
 

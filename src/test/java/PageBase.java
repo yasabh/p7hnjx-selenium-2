@@ -43,10 +43,17 @@ class PageBase {
             // skip it
         }
     }
+
+    public boolean isApprearingAcceptAllCookieButton() {
+        try{
+            return waitAndReturnElement(acceptCookieButton) != null;
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
+        }
+    }
     
     protected WebElement waitAndReturnElement (By locator) throws NoSuchElementException {
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return this.driver.findElement(locator);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void selectFromDropdown(By locator, String valueToSelect) {
@@ -55,24 +62,20 @@ class PageBase {
     }
     
     public void hoverOverElement(By locator) {
-        WebElement element = this.waitAndReturnElement(locator);
+        WebElement element = waitAndReturnElement(locator);
         actions.moveToElement(element).perform();
     }
     
-    public void dragAndDropText(By locator, By elementLocated) {
-        WebElement element = this.driver.findElement(locator);
-        WebElement element1 = this.driver.findElement(elementLocated);
-        actions.dragAndDrop(element, element1)
-            .perform();
-    }
+    // public void dragAndDropText(By locator, By elementLocated) {
+    //     WebElement element = this.driver.findElement(locator);
+    //     WebElement element1 = this.driver.findElement(elementLocated);
+    //     actions.dragAndDrop(element, element1)
+    //         .perform();
+    // }
     
-    public void clickDropdownOption(By dropdownLocator, By optionLocator) {
-        waitAndReturnElement(dropdownLocator).click();
-        wait.until(ExpectedConditions.elementToBeClickable(optionLocator)).click();
-    }
-    
-    public String getBodyText() {
-        WebElement bodyElement = this.waitAndReturnElement(By.tagName("body"));
-        return bodyElement.getText();
-    }
+    // public void clickDropdownOption(By dropdownLocator, By optionLocator) {
+    //     waitAndReturnElement(dropdownLocator).click();
+    //     wait.until(ExpectedConditions.elementToBeClickable(optionLocator)).click();
+    // }
+
 }

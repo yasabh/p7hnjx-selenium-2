@@ -39,6 +39,10 @@ public class LoginPage extends PageBase {
         waitAndReturnElement(loginButton).click();
     }
 
+    public void hoverOverProfile() {
+        hoverOverElement(profileImage);
+    }
+
     public void clickLogoutButton() {
         waitAndReturnElement(logoutButton).click();
     }

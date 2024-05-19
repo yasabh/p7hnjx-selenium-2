@@ -1,4 +1,6 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -11,8 +13,6 @@ public class SettingPage extends LoginPage {
     private By aboutMeInput = By.xpath("//textarea[@name='about_me']"); // complex xpath (eg. //div//a[@href='asd'])
     private By saveButton = By.xpath("//form[@name='profile-form']//button[@type='submit']"); // complex xpath (eg. //div//a[@href='asd'])
     private By successAlert = By.xpath("//div[@class='alert alert-success']"); // complex xpath (eg. //div//a[@href='asd'])
-    private By profileAvatar = By.xpath("//a[@class='masthead-search-toggle']"); // complex xpath (eg. //div//a[@href='asd'])
-    private By profileDropdown = By.xpath("//div[@id='auth-dropdown']"); // complex xpath (eg. //div//a[@href='asd'])
 
     public SettingPage(WebDriver driver) {
         super(driver);
@@ -45,9 +45,5 @@ public class SettingPage extends LoginPage {
 
     public void hoverOverProfileAvatar(){
         hoverOverElement(saveButton);
-    }
-
-    public void dragAndDropText(){
-        dragAndDropText(displayNameInput, aboutMeInput);
     }
 }

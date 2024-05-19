@@ -2,15 +2,19 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.net.MalformedURLException;
-import java.net.URL;
 
 public class SettingTest {
 
     private WebDriver driver;
     private SettingPage settingPage;
+    private String sessionId;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -29,10 +33,23 @@ public class SettingTest {
         settingPage.enterAboutMe("P7HNJX - Big Selenium Project"); // Filling or reading textarea content
         settingPage.clickSaveButton(); // Send a form
 
-        settingPage.dragAndDropText(); // Hover test
-
         String succesMessage = settingPage.getSuccessMessage();
         Assert.assertTrue("Profile update failed to execute", succesMessage.contains("You have successfully updated your profile."));
+    }
+
+    @Test
+    public void testManipulateCookiesWithJavaScript() {
+        // JavascriptExecutor
+        // Manipulate cookie meaningfully (without ui), e.g. avoid showing up consent popup without clicking onto it
+        ZonedDateTime now = ZonedDateTime.now(java.time.ZoneOffset.UTC);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.cookie = 'customCookie=P7HNJX; path=/;';");
+        js.executeScript("document.cookie = 'OptanonAlertBoxClosed=" + now.format(formatter) + "; path=/;';");
+        driver.navigate().refresh();
+
+        Assert.assertTrue("Error manipulating cookie", !settingPage.isApprearingAcceptAllCookieButton());
     }
 
     @After
