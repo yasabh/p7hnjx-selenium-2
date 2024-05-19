@@ -20,8 +20,8 @@ public class SettingTest {
 
     @Test
     public void testUpdateProfile() {
-        settingPage.enterUsername("p7hnjx"); // Fill input (text,radio,check...)
-        settingPage.enterPassword("c@nLog1n"); // Fill input (text,radio,check...)
+        settingPage.enterValidUsername(); // Fill input (text,radio,check...)
+        settingPage.enterValidPassword(); // Fill input (text,radio,check...)
         settingPage.clickLoginButton(); // Send a form
 
         settingPage.enterDisplayName("Yasin Abdullah"); // Fill input (text,radio,check...)
